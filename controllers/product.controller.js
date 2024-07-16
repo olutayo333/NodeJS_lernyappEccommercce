@@ -28,12 +28,19 @@ const productUpload = (req,res)=>{
 }
 
 const deleteProduct = (req, res)=>{
-    let email = req.body.email; let id = req.body.id;
-     console.log(req.body);
-    userModel.findOneAndDelete({_id:id})
-    .then((result)=>{console.log(result); res.send({status:true, message:"Deleted successfully", result})})
+     let id = req.body.id;
+      console.log(id);
+      console.log(req.body);
+     productModel.findOneAndDelete({_id:id})
+    .then((result)=>{console.log("Deleted successfully" + result); res.send({status:true, message:"Deleted successfully", result})})
     .catch((err)=>{console.log(err+ "couldnt delete"); res.send({status:false, message:"could not Delete", result})})
 }
+// const deletetask = (req, res)=>{
+//     let taskID = req.body._id; console.log(req.body);
+//     userModel.findOneAndDelete({_id:taskID})
+//     .then((result)=>{console.log(result); res.send({status:true, message:"Deleted successfully", result})})
+//     .catch((err)=>{console.log(err+ "couldnt delete"); res.send({status:false, message:"could not Delete", result})})
+// }
 
 let userEmail;
 const editProduct = (req, res)=>{
